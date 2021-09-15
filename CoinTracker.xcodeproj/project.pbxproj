@@ -175,19 +175,6 @@
 			path = CoinHistoryModule;
 			sourceTree = "<group>";
 		};
-		B50CE9AC26F245EB001137C1 /* PriceDetailModule */ = {
-			isa = PBXGroup;
-			children = (
-				B50CE9B226F24637001137C1 /* View */,
-				B50CE9B126F24631001137C1 /* Router */,
-				B50CE9B026F24624001137C1 /* Presenter */,
-				B50CE9AF26F2461B001137C1 /* Interactor */,
-				B50CE9AE26F24614001137C1 /* Entity */,
-				B50CE9AD26F2460B001137C1 /* Protocols */,
-			);
-			path = PriceDetailModule;
-			sourceTree = "<group>";
-		};
 		B50CE9AD26F2460B001137C1 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,7 +279,12 @@
 		B50CE9D026F25708001137C1 /* PriceDetailModule */ = {
 			isa = PBXGroup;
 			children = (
-				B50CE9AC26F245EB001137C1 /* PriceDetailModule */,
+				B50CE9B226F24637001137C1 /* View */,
+				B50CE9AF26F2461B001137C1 /* Interactor */,
+				B50CE9B026F24624001137C1 /* Presenter */,
+				B50CE9AE26F24614001137C1 /* Entity */,
+				B50CE9B126F24631001137C1 /* Router */,
+				B50CE9AD26F2460B001137C1 /* Protocols */,
 				B50CE9D126F25708001137C1 /* PriceDetailModule.h */,
 				B50CE9D226F25708001137C1 /* Info.plist */,
 			);

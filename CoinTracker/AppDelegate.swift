@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
  - [ ] Add Errors for APIs. Present alerts
  - [ ] Remove maximum force unwrappings
  - [x] Write Timer logic to refresh today's price
- - [ ] Implement Router navigation
- - [ ] Split the code into frameworks
+ - [x] Implement Router navigation
+ - [ ] Move `CoinHistoryModule` to a new framework
  - [ ] Write unit tests for viewModels and utility classes
  */
