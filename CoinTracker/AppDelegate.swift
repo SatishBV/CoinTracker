@@ -13,17 +13,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let coinHistory = CoinHistoryRouter.createModule()
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let viewController = storyboard.instantiateViewController(withIdentifier: "CoinHistoryViewController") as? CoinHistoryViewController {
-            viewController.viewModel = CoinHistoryViewModel(delegate: viewController)
-            
-            let nav = UINavigationController(rootViewController: viewController)
-            self.window?.rootViewController = nav
-            self.window?.makeKeyAndVisible()
-        }
+        let navigationController = UINavigationController()
+        navigationController.viewControllers = [coinHistory]
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
         
         return true
     }
