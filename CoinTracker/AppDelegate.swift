@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
  TODOS:
  - [ ] Add Errors for APIs. Present alerts
  - [ ] Remove maximum force unwrappings
- - [ ] Write Timer logic to refresh today's price
+ - [x] Write Timer logic to refresh today's price
  - [ ] Implement Router navigation
  - [ ] Split the code into frameworks
  - [ ] Write unit tests for viewModels and utility classes

@@ -25,11 +25,6 @@ final class CoinHistoryViewController: UIViewController {
         spinner.hidesWhenStopped = true
         
         viewModel.getHistoricalData()
-        
-        // TODO: Implement timer logic
-        DispatchQueue.main.asyncAfter(deadline: .now() + 20) { [weak self] in
-            self?.viewModel.getCurrentBitCoinPrice()
-        }
     }
 }
 
