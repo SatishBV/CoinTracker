@@ -9,17 +9,21 @@ import Foundation
 
 protocol CoinHistoryViewModelProtocol: AnyObject {
     func refreshData()
+    func toggleLoading(_ load: Bool)
 }
 
-
 class CoinHistoryViewModel {
-    var apiService: CoinAPIProtocol
-    weak var delegate: CoinHistoryViewModelProtocol?
+    private var apiService: CoinAPIProtocol
+    private weak var delegate: CoinHistoryViewModelProtocol?
     
-    var historicPrices: [Double] = [] {
+    private var historicPrices: [Double] = [] {
         didSet {
             delegate?.refreshData()
         }
+    }
+    
+    var numberOfRows: Int {
+        historicPrices.count
     }
     
     init(
@@ -30,10 +34,16 @@ class CoinHistoryViewModel {
         self.delegate = delegate
     }
     
+    subscript(index: Int) -> CoinHistoryCellViewModel? {
+        guard 0..<historicPrices.count ~= index else { return nil }
+        return CoinHistoryCellViewModel(index: index, price: historicPrices[index])
+    }
+    
     func getHistoricalData() {
+        delegate?.toggleLoading(true)
         apiService.getPastPrices { [weak self] result in
             guard let self = self else { return }
-            
+            self.delegate?.toggleLoading(false)
             switch result {
             case let .success(response):
                 print(response.pastPrices)

@@ -9,6 +9,7 @@ import UIKit
 
 class CoinHistoryViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    let spinner = UIActivityIndicatorView(style: .gray)
     
     // TODO: - Try injecting via initialiser
     var viewModel: CoinHistoryViewModel!
@@ -20,6 +21,7 @@ class CoinHistoryViewController: UIViewController {
         self.navigationItem.title = "Coin history"
         
         tableView.tableFooterView = UIView()
+        tableView.backgroundView = spinner
         
         viewModel.getHistoricalData()
     }
@@ -33,7 +35,7 @@ extension CoinHistoryViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.historicPrices.count
+        viewModel.numberOfRows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -41,8 +43,11 @@ extension CoinHistoryViewController: UITableViewDelegate, UITableViewDataSource 
                 as? CoinHistoryTableViewCell else {
             fatalError("Unable to instantiate cell for coin history")
         }
-        let price: Double = viewModel.historicPrices[indexPath.row]
-        cell.priceLabel.text = "\(price)"
+        
+        if let cellViewModel: CoinHistoryCellViewModel = viewModel[indexPath.row] {
+            cell.configure(for: cellViewModel)
+        }
+        
         return cell
     }
 }
@@ -51,6 +56,12 @@ extension CoinHistoryViewController: CoinHistoryViewModelProtocol {
     func refreshData() {
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()
+        }
+    }
+    
+    func toggleLoading(_ load: Bool) {
+        DispatchQueue.main.async { [weak self] in
+            load ? self?.spinner.startAnimating() : self?.spinner.stopAnimating()
         }
     }
 }

@@ -15,5 +15,9 @@ class CoinHistoryTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
+    func configure(for viewModel: CoinHistoryCellViewModel) {
+        dateLabel.text = viewModel.dateString
+        priceLabel.text = viewModel.formattedPriceString
+    }
 }
