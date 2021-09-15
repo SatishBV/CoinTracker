@@ -54,4 +54,21 @@ final class CoinHistoryViewModel {
             }
         }
     }
+    
+    func getCurrentBitCoinPrice() {
+        apiService.getCurrentPriceInEuros { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case let .success(price):
+                guard !self.historicPrices.isEmpty else {
+                    self.historicPrices.append(price)
+                    return
+                }
+                self.historicPrices[0] = price
+                print("Current price: ",price)
+            case let .failure(error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 }

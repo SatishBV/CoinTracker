@@ -87,6 +87,44 @@ class CoinAPIService: CoinAPIProtocol {
         
         task.resume()
     }
+    
+    func getCurrentPriceInEuros(_ completion: @escaping (Result<Double, Error>) -> Void) {
+        guard var components = URLComponents(string: "https://api.coingecko.com/api/v3/simple/price") else {
+            return
+        }
+        
+        components.queryItems = [
+            URLQueryItem(name: "ids", value: "bitcoin"),
+            URLQueryItem(name: "vs_currencies", value: "eur")
+        ]
+        
+        let request = URLRequest(url: components.url!)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            guard let data = data,
+                  let response = response as? HTTPURLResponse,
+                  200 ..< 300 ~= response.statusCode
+            else {
+                completion(.failure(NSError(domain: "", code: 0, userInfo: nil)))
+                return
+            }
+            
+            do {
+                let resp = try JSONDecoder().decode(CurrentPriceResponse.self, from: data)
+                completion(.success(resp.bitcoin.eur))
+                return
+            } catch {
+                completion(.failure(NSError(domain: "", code: 0, userInfo: nil)))
+                return
+            }
+        }
+        
+        task.resume()
+    }
 }
 
 struct HistoricalPricesResponse: Decodable {
@@ -105,6 +143,14 @@ struct HistoricalPricesResponse: Decodable {
 
 struct ForexConversionResponse: Decodable {
     var rates: ForexRates
+}
+
+struct CurrentPriceResponse: Decodable {
+    let bitcoin: BitCoinResponse
+    
+    struct BitCoinResponse: Decodable {
+        let eur: Double
+    }
 }
 
 struct ForexRates: Decodable {
