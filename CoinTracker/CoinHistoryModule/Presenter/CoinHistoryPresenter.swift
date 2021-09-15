@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class CoinHistoryPresenter: ViewToPresenterProtocol {
-    var view: PresenterToViewProtocol?
+    weak var view: PresenterToViewProtocol?
     var interactor: PresenterToInteractorProtocol?
     var router: PresenterToRouterProtocol?
     private let currentPriceQueue = DispatchQueue(label: "currentPriceQueue:\(UUID().uuidString)")
@@ -17,7 +17,7 @@ class CoinHistoryPresenter: ViewToPresenterProtocol {
     
     private var historicalPrices: [Double] = [] {
         didSet {
-            view?.showHistoricalPrices()
+            view?.refreshTableView()
         }
     }
     

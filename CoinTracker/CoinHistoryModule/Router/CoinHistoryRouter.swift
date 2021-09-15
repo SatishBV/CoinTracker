@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import PriceDetailModule
 
 class CoinHistoryRouter: PresenterToRouterProtocol {
     static var mainstoryboard: UIStoryboard {

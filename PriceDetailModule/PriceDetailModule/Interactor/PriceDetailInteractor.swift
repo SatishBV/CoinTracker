@@ -1,22 +1,25 @@
 //
-//  CoinAPIService.swift
-//  CoinAPI
+//  PriceDetailInteractor.swift
+//  PriceDetailModule
 //
 //  Created by Satish Bandaru on 15/09/21.
 //
 
 import Foundation
 
-class CoinAPIService: CoinAPIProtocol {
+class PriceDetailInteractor: PresenterToInteractorProtocol {
+    weak var presenter: InteractorToPresenterProtocol?
     
-    func getPriceInOtherCurrencies(on dateString: String, _ completion: @escaping (Result<ForexRates, Error>) -> Void) {
+    func fetchForexRates(for dateString: String) {
         // TODO: Prevent API call as it might run out of limit
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            completion(.success(ForexRates(usd: 1.182306, gbp: 0.855735)))
+            self.presenter?.fetchForexRatesSuccess(rates: ForexRates(usd: 1.182306, gbp: 0.855735))
         }
         return
         
-        var components = URLComponents(string: "http://api.exchangeratesapi.io/v1/\(dateString)")!
+        guard var components = URLComponents(string: "http://api.exchangeratesapi.io/v1/\(dateString)") else {
+            return
+        }
         
         components.queryItems = [
             URLQueryItem(name: "access_key", value: "3c00fe4ecb3d4008c90006528d53245d"),
@@ -24,9 +27,11 @@ class CoinAPIService: CoinAPIProtocol {
         ]
         
         let request = URLRequest(url: components.url!)
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error {
-                completion(.failure(error))
+        let task = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
+            guard let self = self else { return }
+            
+            if error != nil {
+                self.presenter?.fetchForexRatesFailed()
                 return
             }
             
@@ -34,16 +39,16 @@ class CoinAPIService: CoinAPIProtocol {
                   let response = response as? HTTPURLResponse,
                   200 ..< 300 ~= response.statusCode
             else {
-                completion(.failure(NSError(domain: "", code: 0, userInfo: nil)))
+                self.presenter?.fetchForexRatesFailed()
                 return
             }
             
             do {
                 let resp = try JSONDecoder().decode(ForexConversionResponse.self, from: data)
-                completion(.success(resp.rates))
+                self.presenter?.fetchForexRatesSuccess(rates: resp.rates)
                 return
             } catch {
-                completion(.failure(NSError(domain: "", code: 0, userInfo: nil)))
+                self.presenter?.fetchForexRatesFailed()
                 return
             }
         }

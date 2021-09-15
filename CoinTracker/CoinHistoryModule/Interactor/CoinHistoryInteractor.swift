@@ -8,7 +8,7 @@
 import Foundation
 
 class CoinHistoryInteractor: PresenterToInteractorProtocol {
-    var presenter: InteractorToPresenterProtocol?
+    weak var presenter: InteractorToPresenterProtocol?
     
     func fetchHistoricalPrices() {
         var components = URLComponents(string: "https://api.coingecko.com/api/v3/coins/bitcoin/market_chart")!

@@ -23,12 +23,20 @@ final class CoinHistoryViewController: UIViewController {
         tableView.backgroundView = spinner
         spinner.hidesWhenStopped = true
         
+        toggleSpinner(loading: true)
         presenter?.fetchHistoricalPrices()
+    }
+    
+    func toggleSpinner(loading: Bool) {
+        DispatchQueue.main.async { [weak self] in
+            loading ? self?.spinner.startAnimating() : self?.spinner.stopAnimating()
+        }
     }
 }
 
 extension CoinHistoryViewController: PresenterToViewProtocol {
-    func showHistoricalPrices() {
+    func refreshTableView() {
+        toggleSpinner(loading: false)
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()
         }
@@ -36,6 +44,7 @@ extension CoinHistoryViewController: PresenterToViewProtocol {
     
     func showError() {
         // TODO: Show an alert
+        toggleSpinner(loading: false)
         print("Error")
     }
 }

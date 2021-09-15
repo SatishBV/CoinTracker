@@ -21,7 +21,7 @@ protocol ViewToPresenterProtocol: AnyObject {
 }
 
 protocol PresenterToViewProtocol: AnyObject {
-    func showHistoricalPrices()
+    func refreshTableView()
     func showError()
 }
 
