@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CoinHistoryViewController: UIViewController {
+final class CoinHistoryViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     let spinner = UIActivityIndicatorView(style: .gray)
     
@@ -22,6 +22,7 @@ class CoinHistoryViewController: UIViewController {
         
         tableView.tableFooterView = UIView()
         tableView.backgroundView = spinner
+        spinner.hidesWhenStopped = true
         
         viewModel.getHistoricalData()
     }
@@ -31,7 +32,18 @@ extension CoinHistoryViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+        guard let cellViewModel = viewModel[indexPath.row] else { return }
+        
         // TODO: Navigate to details screen
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let viewController = storyboard.instantiateViewController(withIdentifier: "PriceDetailViewController") as? PriceDetailViewController {
+            let viewModel = PriceDetailViewModel(baseEuroPrice: cellViewModel.priceInEuros,
+                                                 dateString: cellViewModel.dateString,
+                                                 delegate: viewController)
+            
+            viewController.viewModel = viewModel
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

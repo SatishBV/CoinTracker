@@ -12,7 +12,7 @@ protocol CoinHistoryViewModelProtocol: AnyObject {
     func toggleLoading(_ load: Bool)
 }
 
-class CoinHistoryViewModel {
+final class CoinHistoryViewModel {
     private var apiService: CoinAPIProtocol
     private weak var delegate: CoinHistoryViewModelProtocol?
     
@@ -49,17 +49,6 @@ class CoinHistoryViewModel {
                 print(response.pastPrices)
                 self.historicPrices = response.pastPrices
                 
-            case let .failure(error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    func getForexRates() {
-        apiService.getPriceInOtherCurrencies(on: Date()) { result in
-            switch result {
-            case let .success(response):
-                print(response)
             case let .failure(error):
                 print(error.localizedDescription)
             }

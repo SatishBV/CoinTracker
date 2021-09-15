@@ -9,5 +9,5 @@ import Foundation
 
 protocol CoinAPIProtocol {
     func getPastPrices(_ completion: @escaping (Result<HistoricalPricesResponse, Error>) -> Void)
-    func getPriceInOtherCurrencies(on date: Date, _ completion: @escaping (Result<ForexRates, Error>) -> Void)
+    func getPriceInOtherCurrencies(on dateString: String, _ completion: @escaping (Result<ForexRates, Error>) -> Void)
 }

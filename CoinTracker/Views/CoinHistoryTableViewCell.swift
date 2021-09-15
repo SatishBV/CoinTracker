@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CoinHistoryTableViewCell: UITableViewCell {
+final class CoinHistoryTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     

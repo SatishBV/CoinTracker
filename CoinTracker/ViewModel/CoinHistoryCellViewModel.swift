@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CoinHistoryCellViewModel {
+final class CoinHistoryCellViewModel {
     private var index: Int
     private var price: Double
     
@@ -16,8 +16,12 @@ class CoinHistoryCellViewModel {
         self.price = price
     }
     
+    var priceInEuros: Double {
+        price
+    }
+    
     var formattedPriceString: String {
-        String(format: "%.2f €", price)
+        String(format: "%.2f€", price)
     }
     
     var dateString: String {

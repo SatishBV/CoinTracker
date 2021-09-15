@@ -79,6 +79,71 @@
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="113.83928571428571"/>
         </scene>
+        <!--Price Detail View Controller-->
+        <scene sceneID="D5i-mN-xOe">
+            <objects>
+                <viewController storyboardIdentifier="PriceDetailViewController" id="DRP-e0-bri" customClass="PriceDetailViewController" customModule="CoinTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qmj-BV-phg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="XbM-Ce-RVF">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5Vt-ae-Ueh">
+                                <rect key="frame" x="16" y="388" width="382" height="120"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date: 2021-09-15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgr-ty-VDd">
+                                        <rect key="frame" x="109" y="0.0" width="164.5" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="US Dollars: 23434.32 $" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5F5-3Q-5In">
+                                        <rect key="frame" x="84" y="32" width="214.5" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GB Pounds: 34093.99 $" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="plL-O5-VO6">
+                                        <rect key="frame" x="80.5" y="64" width="221.5" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Euros: 34093.99 $" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zjU-hS-ftl">
+                                        <rect key="frame" x="105" y="96" width="172.5" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="r07-m5-Jgv"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="XbM-Ce-RVF" firstAttribute="centerX" secondItem="Qmj-BV-phg" secondAttribute="centerX" id="Aca-qO-h9w"/>
+                            <constraint firstItem="5Vt-ae-Ueh" firstAttribute="leading" secondItem="r07-m5-Jgv" secondAttribute="leading" constant="16" id="AhJ-aE-4vU"/>
+                            <constraint firstItem="r07-m5-Jgv" firstAttribute="trailing" secondItem="5Vt-ae-Ueh" secondAttribute="trailing" constant="16" id="O3L-OO-mgK"/>
+                            <constraint firstItem="5Vt-ae-Ueh" firstAttribute="centerX" secondItem="Qmj-BV-phg" secondAttribute="centerX" id="VTy-Ve-daO"/>
+                            <constraint firstItem="5Vt-ae-Ueh" firstAttribute="centerY" secondItem="Qmj-BV-phg" secondAttribute="centerY" id="Xgt-Bh-dX8"/>
+                            <constraint firstItem="XbM-Ce-RVF" firstAttribute="centerY" secondItem="Qmj-BV-phg" secondAttribute="centerY" id="yS5-ur-TcC"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dateLabel" destination="bgr-ty-VDd" id="g2e-aH-VU9"/>
+                        <outlet property="detailsStackView" destination="5Vt-ae-Ueh" id="yr1-Fh-NXf"/>
+                        <outlet property="eurosLabel" destination="zjU-hS-ftl" id="cKM-9D-cTK"/>
+                        <outlet property="gbPoundLabel" destination="plL-O5-VO6" id="NlE-Ie-8cq"/>
+                        <outlet property="spinner" destination="XbM-Ce-RVF" id="ShH-UR-PaK"/>
+                        <outlet property="usDollarLabel" destination="5F5-3Q-5In" id="0Qi-KS-21i"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ax1-b9-iZD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1858" y="114"/>
+        </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">

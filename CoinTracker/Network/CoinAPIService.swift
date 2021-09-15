@@ -46,16 +46,12 @@ class CoinAPIService: CoinAPIProtocol {
         task.resume()
     }
     
-    func getPriceInOtherCurrencies(on date: Date, _ completion: @escaping (Result<ForexRates, Error>) -> Void) {
+    func getPriceInOtherCurrencies(on dateString: String, _ completion: @escaping (Result<ForexRates, Error>) -> Void) {
         // TODO: Prevent API call as it might run out of limit
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             completion(.success(ForexRates(usd: 1.182306, gbp: 0.855735)))
         }
         return
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY-MM-dd"
-        let dateString = dateFormatter.string(from: date)
         
         var components = URLComponents(string: "http://api.exchangeratesapi.io/v1/\(dateString)")!
         
