@@ -28,8 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 /**
  TODOS:
- - [ ] Add Errors for APIs. Present alerts
- - [ ] Remove maximum force unwrappings
+ - [x] Add Errors for APIs. Present alerts
+ - [x] Remove maximum force unwrappings
  - [x] Write Timer logic to refresh today's price
  - [x] Implement Router navigation
  - [ ] Move `CoinHistoryModule` to a new framework
