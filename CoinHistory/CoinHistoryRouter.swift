@@ -9,6 +9,13 @@ import Foundation
 import UIKit
 import PriceDetailModule
 
+protocol PresenterToRouterProtocol: AnyObject {
+    static func createModule() -> UIViewController
+    func pushToPriceDetailsScreen(navigationConroller: UINavigationController,
+                                  baseEuroPrice: Double,
+                                  dateString: String)
+}
+
 public class CoinHistoryRouter: PresenterToRouterProtocol {
     static var bundle: Bundle? {
         Bundle(identifier: "com.satish.CoinHistory")
@@ -24,14 +31,12 @@ public class CoinHistoryRouter: PresenterToRouterProtocol {
             fatalError("Unable to load View from storyboard")
         }
         
-        let presenter: ViewToPresenterProtocol & InteractorToPresenterProtocol = CoinHistoryPresenter()
         let interactor: PresenterToInteractorProtocol = CoinHistoryInteractor()
         let router: PresenterToRouterProtocol = CoinHistoryRouter()
+        let presenter = CoinHistoryPresenter(interactor: interactor, router: router)
         
         view.presenter = presenter
         presenter.view = view
-        presenter.router = router
-        presenter.interactor = interactor
         interactor.presenter = presenter
         
         return view

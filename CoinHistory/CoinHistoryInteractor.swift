@@ -8,6 +8,19 @@
 import Foundation
 import Utilities
 
+protocol PresenterToInteractorProtocol: AnyObject {
+    var presenter: InteractorToPresenterProtocol? { get set }
+    
+    func fetchHistoricalPrices()
+    func fetchCurrentBitCoinPrice()
+}
+
+protocol InteractorToPresenterProtocol: AnyObject {
+    func historicalPricesFetchedSuccess(prices: [Double])
+    func currentBitCoinPriceFetchSuccess(price: Double)
+    func networkingError(_ errorMessage: String)
+}
+
 class CoinHistoryInteractor: PresenterToInteractorProtocol {
     weak var presenter: InteractorToPresenterProtocol?
     

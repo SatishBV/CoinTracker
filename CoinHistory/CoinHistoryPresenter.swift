@@ -8,12 +8,35 @@
 import Foundation
 import UIKit
 
+protocol ViewToPresenterProtocol: AnyObject {
+    var view: PresenterToViewProtocol? { get set }
+    var numberOfRows: Int { get }
+    
+    subscript(index: Int) -> CoinHistoryCellViewModel? { get }
+    
+    func fetchHistoricalPrices()
+    func showPriceDetails(index: Int, navigationController: UINavigationController)
+}
+
+protocol PresenterToViewProtocol: AnyObject {
+    func refreshTableView()
+    func showError(message: String)
+}
+
 class CoinHistoryPresenter: ViewToPresenterProtocol {
     weak var view: PresenterToViewProtocol?
-    var interactor: PresenterToInteractorProtocol?
-    var router: PresenterToRouterProtocol?
+    private var interactor: PresenterToInteractorProtocol
+    private var router: PresenterToRouterProtocol
     private let currentPriceQueue = DispatchQueue(label: "currentPriceQueue:\(UUID().uuidString)")
     private var timer: Timer?
+    
+    init(
+        interactor: PresenterToInteractorProtocol,
+        router: PresenterToRouterProtocol
+    ) {
+        self.interactor = interactor
+        self.router = router
+    }
     
     private var historicalPrices: [Double] = [] {
         didSet {
@@ -31,13 +54,13 @@ class CoinHistoryPresenter: ViewToPresenterProtocol {
     }
     
     func fetchHistoricalPrices() {
-        interactor?.fetchHistoricalPrices()
+        interactor.fetchHistoricalPrices()
     }
     
     func showPriceDetails(index: Int, navigationController: UINavigationController) {
         guard let cellViewModel = self[index] else { return }
         
-        router?.pushToPriceDetailsScreen(navigationConroller: navigationController,
+        router.pushToPriceDetailsScreen(navigationConroller: navigationController,
                                          baseEuroPrice: cellViewModel.priceInEuros,
                                          dateString: cellViewModel.dateString)
     }
@@ -73,7 +96,7 @@ extension CoinHistoryPresenter {
     @objc func getCurrentBitCoinPrice() {
         // Fetch the price on current price queue to avoid hogging up other threads
         currentPriceQueue.async { [weak self] in
-            self?.interactor?.fetchCurrentBitCoinPrice()
+            self?.interactor.fetchCurrentBitCoinPrice()
         }
     }
     
