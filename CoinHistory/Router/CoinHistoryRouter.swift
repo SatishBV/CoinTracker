@@ -9,15 +9,19 @@ import Foundation
 import UIKit
 import PriceDetailModule
 
-class CoinHistoryRouter: PresenterToRouterProtocol {
-    static var mainstoryboard: UIStoryboard {
-        return UIStoryboard(name: "Main", bundle: Bundle.main)
+public class CoinHistoryRouter: PresenterToRouterProtocol {
+    static var bundle: Bundle? {
+        Bundle(identifier: "com.satish.CoinHistory")
     }
     
-    static func createModule() -> CoinHistoryViewController {
-        guard let view = mainstoryboard.instantiateViewController(withIdentifier: "CoinHistoryViewController")
+    static var storyboard: UIStoryboard {
+        return UIStoryboard(name: "Main", bundle: bundle)
+    }
+    
+    public static func createModule() -> UIViewController {
+        guard let view = storyboard.instantiateViewController(withIdentifier: String(describing: CoinHistoryViewController.self))
                 as? CoinHistoryViewController else {
-            fatalError("Unable to Load view from storyboard")
+            fatalError("Unable to load View from storyboard")
         }
         
         let presenter: ViewToPresenterProtocol & InteractorToPresenterProtocol = CoinHistoryPresenter()
