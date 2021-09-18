@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Utilities
 
 protocol PresenterToInteractorProtocol: AnyObject {
     var presenter: InteractorToPresenterProtocol? { get set }
@@ -24,18 +23,16 @@ protocol InteractorToPresenterProtocol: AnyObject {
 class CoinHistoryInteractor: PresenterToInteractorProtocol {
     weak var presenter: InteractorToPresenterProtocol?
     
+    var coinGeckoClient: CoinGeckoProtocol
+    
+    init(
+        coinGeckoClient: CoinGeckoProtocol = CoinGeckoService()
+    ) {
+        self.coinGeckoClient = coinGeckoClient
+    }
+    
     func fetchHistoricalPrices() {
-        guard var components = URLComponents(string: "https://api.coingecko.com/api/v3/coins/bitcoin/market_chart") else {
-            return
-        }
-        
-        components.queryItems = [
-            URLQueryItem(name: "vs_currency", value: "eur"),
-            URLQueryItem(name: "days", value: "14"),
-            URLQueryItem(name: "interval", value: "daily"),
-        ]
-        
-        NetworkManager<HistoricalPricesResponse>.fetch(from: components) { [weak self] result in
+        coinGeckoClient.fetchHistoricalPrices { [weak self] result in
             guard let self = self else { return }
             switch result {
             case let .success(response):
@@ -47,16 +44,7 @@ class CoinHistoryInteractor: PresenterToInteractorProtocol {
     }
     
     func fetchCurrentBitCoinPrice() {
-        guard var components = URLComponents(string: "https://api.coingecko.com/api/v3/simple/price") else {
-            return
-        }
-        
-        components.queryItems = [
-            URLQueryItem(name: "ids", value: "bitcoin"),
-            URLQueryItem(name: "vs_currencies", value: "eur")
-        ]
-        
-        NetworkManager<CurrentPriceResponse>.fetch(from: components) { [weak self] result in
+        coinGeckoClient.fetchCurrentBitCoinPrice { [weak self] result in
             guard let self = self else { return }
             switch result {
             case let .success(response):

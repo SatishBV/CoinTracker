@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Utilities
 
 protocol InteractorToPresenterProtocol: AnyObject {
     func fetchForexRatesSuccess(rates: ForexRates)
@@ -22,6 +21,14 @@ protocol PresenterToInteractorProtocol: AnyObject {
 class PriceDetailInteractor: PresenterToInteractorProtocol {
     weak var presenter: InteractorToPresenterProtocol?
     
+    var exchangeRatesClient: ExchangeRatesProtocol
+    
+    init(
+        exchangeRatesClient: ExchangeRatesProtocol = ForexRatesService()
+    ) {
+        self.exchangeRatesClient = exchangeRatesClient
+    }
+    
     func fetchForexRates(for dateString: String) {
         // TODO: Prevent API call as it might run out of limit
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -29,16 +36,7 @@ class PriceDetailInteractor: PresenterToInteractorProtocol {
         }
         return
         
-        guard var components = URLComponents(string: "http://api.exchangeratesapi.io/v1/\(dateString)") else {
-            return
-        }
-        
-        components.queryItems = [
-            URLQueryItem(name: "access_key", value: "3c00fe4ecb3d4008c90006528d53245d"),
-            URLQueryItem(name: "symbols", value: "USD,GBP")
-        ]
-        
-        NetworkManager<ForexConversionResponse>.fetch(from: components) { [weak self] result in
+        exchangeRatesClient.forexRates(for: dateString) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case let .success(response):

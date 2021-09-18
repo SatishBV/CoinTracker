@@ -34,13 +34,15 @@
 		B5F79E1526F5B7F0006CD26A /* HistoricalPricesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50CE9BC26F24712001137C1 /* HistoricalPricesResponse.swift */; };
 		B5F79E1626F5B7F4006CD26A /* CurrentPriceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50CE9BE26F2472E001137C1 /* CurrentPriceResponse.swift */; };
 		B5F79E1726F5B7FB006CD26A /* CoinHistoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50CE9C626F24D61001137C1 /* CoinHistoryRouter.swift */; };
-		B5F79E1D26F5B8A6006CD26A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F79E1926F5B8A6006CD26A /* NetworkManager.swift */; };
+		B5F79E1D26F5B8A6006CD26A /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F79E1926F5B8A6006CD26A /* NetworkClient.swift */; };
 		B5F79E1E26F5B8A6006CD26A /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F79E1A26F5B8A6006CD26A /* NetworkError.swift */; };
 		B5F79E1F26F5B8A6006CD26A /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F79E1C26F5B8A6006CD26A /* UIViewController+Extensions.swift */; };
 		B5F79E2326F5BBF5006CD26A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5F79E2226F5BBF5006CD26A /* Main.storyboard */; };
 		B5F79E2B26F5C1B7006CD26A /* CoinHistoryPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F79E2A26F5C1B7006CD26A /* CoinHistoryPresenterTests.swift */; };
 		B5F79E2D26F5C1B7006CD26A /* CoinHistory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5F79E0226F5B7AF006CD26A /* CoinHistory.framework */; platformFilter = ios; };
 		B5F79E3726F5E5F7006CD26A /* CoinHistoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F79E3626F5E5F7006CD26A /* CoinHistoryInteractor.swift */; };
+		B5F79E3926F5F635006CD26A /* CoinGeckoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F79E3826F5F635006CD26A /* CoinGeckoService.swift */; };
+		B5F79E3B26F5F84F006CD26A /* ForexRatesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F79E3A26F5F84F006CD26A /* ForexRatesService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,7 +131,7 @@
 		B5F79E0226F5B7AF006CD26A /* CoinHistory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoinHistory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5F79E0426F5B7AF006CD26A /* CoinHistory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoinHistory.h; sourceTree = "<group>"; };
 		B5F79E0526F5B7AF006CD26A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B5F79E1926F5B8A6006CD26A /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		B5F79E1926F5B8A6006CD26A /* NetworkClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		B5F79E1A26F5B8A6006CD26A /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		B5F79E1C26F5B8A6006CD26A /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		B5F79E2226F5BBF5006CD26A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -137,6 +139,8 @@
 		B5F79E2A26F5C1B7006CD26A /* CoinHistoryPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinHistoryPresenterTests.swift; sourceTree = "<group>"; };
 		B5F79E2C26F5C1B7006CD26A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5F79E3626F5E5F7006CD26A /* CoinHistoryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinHistoryInteractor.swift; sourceTree = "<group>"; };
+		B5F79E3826F5F635006CD26A /* CoinGeckoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinGeckoService.swift; sourceTree = "<group>"; };
+		B5F79E3A26F5F84F006CD26A /* ForexRatesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForexRatesService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -281,6 +285,7 @@
 				B50CE9AE26F24614001137C1 /* Entity */,
 				B50CE9D126F25708001137C1 /* PriceDetailModule.h */,
 				B50CE9D226F25708001137C1 /* Info.plist */,
+				B5F79E3A26F5F84F006CD26A /* ForexRatesService.swift */,
 			);
 			path = PriceDetailModule;
 			sourceTree = "<group>";
@@ -303,6 +308,7 @@
 				B50CE9C426F24970001137C1 /* CoinHistoryInteractor.swift */,
 				B50CE9C226F248C5001137C1 /* CoinHistoryPresenter.swift */,
 				B50CE9C626F24D61001137C1 /* CoinHistoryRouter.swift */,
+				B5F79E3826F5F635006CD26A /* CoinGeckoService.swift */,
 				B50CE9B726F2465D001137C1 /* View */,
 				B50CE9B426F2464B001137C1 /* Entity */,
 				B5F79E0426F5B7AF006CD26A /* CoinHistory.h */,
@@ -314,7 +320,7 @@
 		B5F79E1826F5B8A6006CD26A /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				B5F79E1926F5B8A6006CD26A /* NetworkManager.swift */,
+				B5F79E1926F5B8A6006CD26A /* NetworkClient.swift */,
 				B5F79E1A26F5B8A6006CD26A /* NetworkError.swift */,
 			);
 			path = Network;
@@ -604,6 +610,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B50CE9E026F259C3001137C1 /* ForexConversionResponse.swift in Sources */,
+				B5F79E3B26F5F84F006CD26A /* ForexRatesService.swift in Sources */,
 				B50CE9E426F25B30001137C1 /* PriceDetailPresenter.swift in Sources */,
 				B50CE9E626F25DB3001137C1 /* PriceDetailInteractor.swift in Sources */,
 				B50CE9DB26F25987001137C1 /* PriceDetailRouter.swift in Sources */,
@@ -617,7 +624,7 @@
 			files = (
 				B5F79E1F26F5B8A6006CD26A /* UIViewController+Extensions.swift in Sources */,
 				B5F79E1E26F5B8A6006CD26A /* NetworkError.swift in Sources */,
-				B5F79E1D26F5B8A6006CD26A /* NetworkManager.swift in Sources */,
+				B5F79E1D26F5B8A6006CD26A /* NetworkClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -633,6 +640,7 @@
 				B5F79E1126F5B7D9006CD26A /* CoinHistoryViewController.swift in Sources */,
 				B5F79E1326F5B7E3006CD26A /* CoinHistoryInteractor.swift in Sources */,
 				B5F79E1226F5B7DD006CD26A /* CoinHistoryTableViewCell.swift in Sources */,
+				B5F79E3926F5F635006CD26A /* CoinGeckoService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
