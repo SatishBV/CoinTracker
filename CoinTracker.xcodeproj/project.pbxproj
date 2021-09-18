@@ -39,7 +39,6 @@
 		B5F79E1D26F5B8A6006CD26A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F79E1926F5B8A6006CD26A /* NetworkManager.swift */; };
 		B5F79E1E26F5B8A6006CD26A /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F79E1A26F5B8A6006CD26A /* NetworkError.swift */; };
 		B5F79E1F26F5B8A6006CD26A /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F79E1C26F5B8A6006CD26A /* UIViewController+Extensions.swift */; };
-		B5F79E2126F5BB09006CD26A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5F79E2026F5BB09006CD26A /* Main.storyboard */; };
 		B5F79E2326F5BBF5006CD26A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5F79E2226F5BBF5006CD26A /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -127,7 +126,6 @@
 		B5F79E1926F5B8A6006CD26A /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		B5F79E1A26F5B8A6006CD26A /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		B5F79E1C26F5B8A6006CD26A /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
-		B5F79E2026F5BB09006CD26A /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B5F79E2226F5BBF5006CD26A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -200,12 +198,10 @@
 		B50CE95326F1E397001137C1 /* CoinTracker */ = {
 			isa = PBXGroup;
 			children = (
-				B50CE9AB26F245E1001137C1 /* CoinHistoryModule */,
 				B50CE95426F1E397001137C1 /* AppDelegate.swift */,
 				B50CE95D26F1E39A001137C1 /* Assets.xcassets */,
 				B50CE95F26F1E39A001137C1 /* LaunchScreen.storyboard */,
 				B50CE96226F1E39A001137C1 /* Info.plist */,
-				B5F79E2026F5BB09006CD26A /* Main.storyboard */,
 			);
 			path = CoinTracker;
 			sourceTree = "<group>";
@@ -217,13 +213,6 @@
 				B50CE96D26F1E39A001137C1 /* Info.plist */,
 			);
 			path = CoinTrackerTests;
-			sourceTree = "<group>";
-		};
-		B50CE9AB26F245E1001137C1 /* CoinHistoryModule */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CoinHistoryModule;
 			sourceTree = "<group>";
 		};
 		B50CE9AD26F2460B001137C1 /* Protocols */ = {
@@ -563,7 +552,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5F79E2126F5BB09006CD26A /* Main.storyboard in Resources */,
 				B50CE96126F1E39A001137C1 /* LaunchScreen.storyboard in Resources */,
 				B50CE95E26F1E39A001137C1 /* Assets.xcassets in Resources */,
 			);
