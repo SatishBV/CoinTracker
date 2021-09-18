@@ -27,15 +27,17 @@ class CoinHistoryPresenter: ViewToPresenterProtocol {
     weak var view: PresenterToViewProtocol?
     private var interactor: PresenterToInteractorProtocol
     private var router: PresenterToRouterProtocol
-    private let currentPriceQueue = DispatchQueue(label: "currentPriceQueue:\(UUID().uuidString)")
+    private let priceRefreshQueue: DispatchQueueType
     private var timer: Timer?
     
     init(
         interactor: PresenterToInteractorProtocol,
-        router: PresenterToRouterProtocol
+        router: PresenterToRouterProtocol,
+        priceRefreshQueue: DispatchQueueType = DispatchQueue(label: "currentPriceQueue:\(UUID().uuidString)")
     ) {
         self.interactor = interactor
         self.router = router
+        self.priceRefreshQueue = priceRefreshQueue
     }
     
     private var historicalPrices: [Double] = [] {
@@ -60,9 +62,11 @@ class CoinHistoryPresenter: ViewToPresenterProtocol {
     func showPriceDetails(index: Int, navigationController: UINavigationController) {
         guard let cellViewModel = self[index] else { return }
         
-        router.pushToPriceDetailsScreen(navigationConroller: navigationController,
-                                         baseEuroPrice: cellViewModel.priceInEuros,
-                                         dateString: cellViewModel.dateString)
+        router.pushToPriceDetailsScreen(
+            navigationConroller: navigationController,
+            baseEuroPrice: cellViewModel.priceInEuros,
+            dateString: cellViewModel.dateString
+        )
     }
     
     deinit {
@@ -95,7 +99,7 @@ extension CoinHistoryPresenter: InteractorToPresenterProtocol {
 extension CoinHistoryPresenter {
     @objc func getCurrentBitCoinPrice() {
         // Fetch the price on current price queue to avoid hogging up other threads
-        currentPriceQueue.async { [weak self] in
+        priceRefreshQueue.async { [weak self] in
             self?.interactor.fetchCurrentBitCoinPrice()
         }
     }
@@ -111,5 +115,15 @@ extension CoinHistoryPresenter {
                 self.getCurrentBitCoinPrice()
             }
         }
+    }
+}
+
+protocol DispatchQueueType {
+    func async(execute work: @escaping @convention(block) () -> Void)
+}
+ 
+extension DispatchQueue: DispatchQueueType {
+    func async(execute work: @escaping @convention(block) () -> Void) {
+        async(group: nil, qos: .unspecified, flags: [], execute: work)
     }
 }

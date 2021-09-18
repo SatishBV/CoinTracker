@@ -7,7 +7,11 @@
 
 import Foundation
 
-final class CoinHistoryCellViewModel {
+final class CoinHistoryCellViewModel: Equatable {
+    static func == (lhs: CoinHistoryCellViewModel, rhs: CoinHistoryCellViewModel) -> Bool {
+        lhs.index == rhs.index && lhs.price == rhs.price
+    }
+    
     private var index: Int
     private var price: Double
     

@@ -195,9 +195,9 @@
 				B50CE95326F1E397001137C1 /* CoinTracker */,
 				B50CE96A26F1E39A001137C1 /* CoinTrackerTests */,
 				B5F79E0326F5B7AF006CD26A /* CoinHistory */,
+				B5F79E2926F5C1B7006CD26A /* CoinHistoryTests */,
 				B50CE9D026F25708001137C1 /* PriceDetailModule */,
 				B5F79DEA26F5AC8B006CD26A /* Utilities */,
-				B5F79E2926F5C1B7006CD26A /* CoinHistoryTests */,
 				B50CE95226F1E397001137C1 /* Products */,
 			);
 			sourceTree = "<group>";
