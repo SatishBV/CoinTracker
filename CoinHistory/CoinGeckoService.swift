@@ -25,20 +25,8 @@ class CoinGeckoService: NetworkClient, CoinGeckoProtocol {
             URLQueryItem(name: "interval", value: "daily"),
         ]
         
-        self.fetch(from: components) { result in
-            switch result {
-            case let .failure(error):
-                completion(.failure(error))
-                
-            case let .success(data):
-                do {
-                    let decoder = JSONDecoder()
-                    let response = try decoder.decode(HistoricalPricesResponse.self, from: data)
-                    completion(.success(response))
-                } catch {
-                    completion(.failure(.parsingError))
-                }
-            }
+        self.fetch(from: components, for: HistoricalPricesResponse.self) { result in
+            completion(result)
         }
     }
     
@@ -52,20 +40,8 @@ class CoinGeckoService: NetworkClient, CoinGeckoProtocol {
             URLQueryItem(name: "vs_currencies", value: "eur")
         ]
         
-        self.fetch(from: components) { result in
-            switch result {
-            case let .failure(error):
-                completion(.failure(error))
-                
-            case let .success(data):
-                do {
-                    let decoder = JSONDecoder()
-                    let response = try decoder.decode(CurrentPriceResponse.self, from: data)
-                    completion(.success(response))
-                } catch {
-                    completion(.failure(.parsingError))
-                }
-            }
+        self.fetch(from: components, for: CurrentPriceResponse.self) { result in
+            completion(result)
         }
     }
 }

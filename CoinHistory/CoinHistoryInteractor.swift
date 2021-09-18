@@ -23,16 +23,16 @@ protocol InteractorToPresenterProtocol: AnyObject {
 class CoinHistoryInteractor: PresenterToInteractorProtocol {
     weak var presenter: InteractorToPresenterProtocol?
     
-    var coinGeckoClient: CoinGeckoProtocol
+    let coinGeckoService: CoinGeckoProtocol
     
     init(
-        coinGeckoClient: CoinGeckoProtocol = CoinGeckoService()
+        coinGeckoService: CoinGeckoProtocol = CoinGeckoService()
     ) {
-        self.coinGeckoClient = coinGeckoClient
+        self.coinGeckoService = coinGeckoService
     }
     
     func fetchHistoricalPrices() {
-        coinGeckoClient.fetchHistoricalPrices { [weak self] result in
+        coinGeckoService.fetchHistoricalPrices { [weak self] result in
             guard let self = self else { return }
             switch result {
             case let .success(response):
@@ -44,7 +44,7 @@ class CoinHistoryInteractor: PresenterToInteractorProtocol {
     }
     
     func fetchCurrentBitCoinPrice() {
-        coinGeckoClient.fetchCurrentBitCoinPrice { [weak self] result in
+        coinGeckoService.fetchCurrentBitCoinPrice { [weak self] result in
             guard let self = self else { return }
             switch result {
             case let .success(response):

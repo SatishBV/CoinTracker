@@ -21,12 +21,12 @@ protocol PresenterToInteractorProtocol: AnyObject {
 class PriceDetailInteractor: PresenterToInteractorProtocol {
     weak var presenter: InteractorToPresenterProtocol?
     
-    var exchangeRatesClient: ExchangeRatesProtocol
+    let forexRatesService: ForexRatesProtocol
     
     init(
-        exchangeRatesClient: ExchangeRatesProtocol = ForexRatesService()
+        forexRatesService: ForexRatesProtocol = ForexRatesService()
     ) {
-        self.exchangeRatesClient = exchangeRatesClient
+        self.forexRatesService = forexRatesService
     }
     
     func fetchForexRates(for dateString: String) {
@@ -36,7 +36,7 @@ class PriceDetailInteractor: PresenterToInteractorProtocol {
         }
         return
         
-        exchangeRatesClient.forexRates(for: dateString) { [weak self] result in
+        forexRatesService.forexRates(for: dateString) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case let .success(response):

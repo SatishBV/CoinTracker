@@ -8,11 +8,11 @@
 import Foundation
 import Utilities
 
-protocol ExchangeRatesProtocol {
+protocol ForexRatesProtocol {
     func forexRates(for dateString: String, _ completion: @escaping (Result<ForexConversionResponse, NetworkError>) -> Void)
 }
 
-class ForexRatesService: NetworkClient, ExchangeRatesProtocol {
+class ForexRatesService: NetworkClient, ForexRatesProtocol {
     func forexRates(for dateString: String, _ completion: @escaping (Result<ForexConversionResponse, NetworkError>) -> Void) {
         guard var components = URLComponents(string: "http://api.exchangeratesapi.io/v1/\(dateString)") else {
             return
@@ -23,20 +23,8 @@ class ForexRatesService: NetworkClient, ExchangeRatesProtocol {
             URLQueryItem(name: "symbols", value: "USD,GBP")
         ]
         
-        self.fetch(from: components) { result in
-            switch result {
-            case let .failure(error):
-                completion(.failure(error))
-                
-            case let .success(data):
-                do {
-                    let decoder = JSONDecoder()
-                    let response = try decoder.decode(ForexConversionResponse.self, from: data)
-                    completion(.success(response))
-                } catch {
-                    completion(.failure(.parsingError))
-                }
-            }
+        self.fetch(from: components, for: ForexConversionResponse.self) { result in
+            completion(result)
         }
     }
 }
