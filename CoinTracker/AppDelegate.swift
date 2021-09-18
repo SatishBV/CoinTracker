@@ -6,17 +6,18 @@
 //
 
 import UIKit
+import CoinHistory
 
-@main
+@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let coinHistory = CoinHistoryRouter.createModule()
+        let viewController = CoinHistoryRouter.createModule()
         
         let navigationController = UINavigationController()
-        navigationController.viewControllers = [coinHistory]
+        navigationController.viewControllers = [viewController]
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navigationController
@@ -34,4 +35,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
  - [x] Implement Router navigation
  - [ ] Move `CoinHistoryModule` to a new framework
  - [ ] Write unit tests for viewModels and utility classes
+ - [ ] Write documentation
  */

@@ -26,7 +26,7 @@ protocol PresenterToViewProtocol: AnyObject {
 }
 
 protocol PresenterToRouterProtocol: AnyObject {
-    static func createModule() -> CoinHistoryViewController
+    static func createModule() -> UIViewController
     func pushToPriceDetailsScreen(navigationConroller: UINavigationController,
                                   baseEuroPrice: Double,
                                   dateString: String)
