@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Price Detail View Controller-->
+        <scene sceneID="amU-tR-U6b">
+            <objects>
+                <viewController storyboardIdentifier="PriceDetailViewController" nibName="PriceDetailViewController" id="r2D-69-7VH" customClass="PriceDetailViewController" customModule="PriceDetailModule" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Pa4-GI-H8A">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Yck-Ca-jqd">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XiG-hn-RjL">
+                                <rect key="frame" x="16" y="388" width="382" height="120"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date: 2021-09-15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AN6-Jq-jKI">
+                                        <rect key="frame" x="109" y="0.0" width="164.5" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="US Dollars: 23434.32 $" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j4d-Id-OMg">
+                                        <rect key="frame" x="84" y="32" width="214.5" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GB Pounds: 34093.99 $" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qNf-35-I53">
+                                        <rect key="frame" x="80.5" y="64" width="221.5" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Euros: 34093.99 $" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZR-g8-RRX">
+                                        <rect key="frame" x="105" y="96" width="172.5" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="HZ0-g7-DcG"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="XiG-hn-RjL" firstAttribute="centerX" secondItem="Pa4-GI-H8A" secondAttribute="centerX" id="4pS-JZ-q98"/>
+                            <constraint firstItem="Yck-Ca-jqd" firstAttribute="centerY" secondItem="Pa4-GI-H8A" secondAttribute="centerY" id="5EO-OW-kwE"/>
+                            <constraint firstItem="XiG-hn-RjL" firstAttribute="leading" secondItem="HZ0-g7-DcG" secondAttribute="leading" constant="16" id="NaR-h9-aWM"/>
+                            <constraint firstItem="HZ0-g7-DcG" firstAttribute="trailing" secondItem="XiG-hn-RjL" secondAttribute="trailing" constant="16" id="R7N-mm-e3E"/>
+                            <constraint firstItem="Yck-Ca-jqd" firstAttribute="centerX" secondItem="Pa4-GI-H8A" secondAttribute="centerX" id="Rwp-Xa-OrC"/>
+                            <constraint firstItem="XiG-hn-RjL" firstAttribute="centerY" secondItem="Pa4-GI-H8A" secondAttribute="centerY" id="tus-d0-SxG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dateLabel" destination="AN6-Jq-jKI" id="HC4-pA-niF"/>
+                        <outlet property="detailsStackView" destination="XiG-hn-RjL" id="3Ow-n3-tTO"/>
+                        <outlet property="eurosLabel" destination="YZR-g8-RRX" id="x2Q-e3-LBI"/>
+                        <outlet property="gbPoundLabel" destination="qNf-35-I53" id="5IK-ee-MeU"/>
+                        <outlet property="spinner" destination="Yck-Ca-jqd" id="FsK-U5-89u"/>
+                        <outlet property="usDollarLabel" destination="j4d-Id-OMg" id="Wkr-TZ-BU4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wxe-aO-fLY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1858" y="114"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
