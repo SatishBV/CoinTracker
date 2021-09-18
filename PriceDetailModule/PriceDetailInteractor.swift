@@ -8,6 +8,17 @@
 import Foundation
 import Utilities
 
+protocol InteractorToPresenterProtocol: AnyObject {
+    func fetchForexRatesSuccess(rates: ForexRates)
+    func networkError(_ errorMessage: String)
+}
+
+protocol PresenterToInteractorProtocol: AnyObject {
+    var presenter: InteractorToPresenterProtocol? { get set }
+    
+    func fetchForexRates(for dateString: String)
+}
+
 class PriceDetailInteractor: PresenterToInteractorProtocol {
     weak var presenter: InteractorToPresenterProtocol?
     

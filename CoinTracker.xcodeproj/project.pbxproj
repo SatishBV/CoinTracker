@@ -17,7 +17,6 @@
 		B50CE9DB26F25987001137C1 /* PriceDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50CE9C826F2546C001137C1 /* PriceDetailRouter.swift */; };
 		B50CE9DC26F2598C001137C1 /* PriceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50CE9A726F22351001137C1 /* PriceDetailViewController.swift */; };
 		B50CE9E026F259C3001137C1 /* ForexConversionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50CE9B926F246BC001137C1 /* ForexConversionResponse.swift */; };
-		B50CE9E226F25A52001137C1 /* PriceDetailProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50CE9E126F25A52001137C1 /* PriceDetailProtocol.swift */; };
 		B50CE9E426F25B30001137C1 /* PriceDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50CE9E326F25B30001137C1 /* PriceDetailPresenter.swift */; };
 		B50CE9E626F25DB3001137C1 /* PriceDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50CE9E526F25DB3001137C1 /* PriceDetailInteractor.swift */; };
 		B50CE9EA26F264C4001137C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B50CE9E926F264C4001137C1 /* Main.storyboard */; };
@@ -41,6 +40,7 @@
 		B5F79E2326F5BBF5006CD26A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5F79E2226F5BBF5006CD26A /* Main.storyboard */; };
 		B5F79E2B26F5C1B7006CD26A /* CoinHistoryPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F79E2A26F5C1B7006CD26A /* CoinHistoryPresenterTests.swift */; };
 		B5F79E2D26F5C1B7006CD26A /* CoinHistory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5F79E0226F5B7AF006CD26A /* CoinHistory.framework */; platformFilter = ios; };
+		B5F79E3726F5E5F7006CD26A /* CoinHistoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F79E3626F5E5F7006CD26A /* CoinHistoryInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,7 +120,6 @@
 		B50CE9CF26F25708001137C1 /* PriceDetailModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PriceDetailModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B50CE9D126F25708001137C1 /* PriceDetailModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PriceDetailModule.h; sourceTree = "<group>"; };
 		B50CE9D226F25708001137C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B50CE9E126F25A52001137C1 /* PriceDetailProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceDetailProtocol.swift; sourceTree = "<group>"; };
 		B50CE9E326F25B30001137C1 /* PriceDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceDetailPresenter.swift; sourceTree = "<group>"; };
 		B50CE9E526F25DB3001137C1 /* PriceDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceDetailInteractor.swift; sourceTree = "<group>"; };
 		B50CE9E926F264C4001137C1 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -137,6 +136,7 @@
 		B5F79E2826F5C1B7006CD26A /* CoinHistoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoinHistoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5F79E2A26F5C1B7006CD26A /* CoinHistoryPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinHistoryPresenterTests.swift; sourceTree = "<group>"; };
 		B5F79E2C26F5C1B7006CD26A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5F79E3626F5E5F7006CD26A /* CoinHistoryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinHistoryInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,14 +235,6 @@
 			path = CoinTrackerTests;
 			sourceTree = "<group>";
 		};
-		B50CE9AD26F2460B001137C1 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				B50CE9E126F25A52001137C1 /* PriceDetailProtocol.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
 		B50CE9AE26F24614001137C1 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,34 +243,9 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
-		B50CE9AF26F2461B001137C1 /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-				B50CE9E526F25DB3001137C1 /* PriceDetailInteractor.swift */,
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
-		B50CE9B026F24624001137C1 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				B50CE9E326F25B30001137C1 /* PriceDetailPresenter.swift */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		B50CE9B126F24631001137C1 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				B50CE9C826F2546C001137C1 /* PriceDetailRouter.swift */,
-			);
-			path = Router;
-			sourceTree = "<group>";
-		};
 		B50CE9B226F24637001137C1 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B50CE9A726F22351001137C1 /* PriceDetailViewController.swift */,
 				B50CE9E926F264C4001137C1 /* Main.storyboard */,
 			);
 			path = View;
@@ -306,12 +273,12 @@
 		B50CE9D026F25708001137C1 /* PriceDetailModule */ = {
 			isa = PBXGroup;
 			children = (
+				B50CE9A726F22351001137C1 /* PriceDetailViewController.swift */,
+				B50CE9E526F25DB3001137C1 /* PriceDetailInteractor.swift */,
+				B50CE9E326F25B30001137C1 /* PriceDetailPresenter.swift */,
+				B50CE9C826F2546C001137C1 /* PriceDetailRouter.swift */,
 				B50CE9B226F24637001137C1 /* View */,
-				B50CE9AF26F2461B001137C1 /* Interactor */,
-				B50CE9B026F24624001137C1 /* Presenter */,
 				B50CE9AE26F24614001137C1 /* Entity */,
-				B50CE9B126F24631001137C1 /* Router */,
-				B50CE9AD26F2460B001137C1 /* Protocols */,
 				B50CE9D126F25708001137C1 /* PriceDetailModule.h */,
 				B50CE9D226F25708001137C1 /* Info.plist */,
 			);
@@ -364,18 +331,11 @@
 		B5F79E2926F5C1B7006CD26A /* CoinHistoryTests */ = {
 			isa = PBXGroup;
 			children = (
-				B5F79E3326F5C301006CD26A /* Mocks */,
 				B5F79E2A26F5C1B7006CD26A /* CoinHistoryPresenterTests.swift */,
+				B5F79E3626F5E5F7006CD26A /* CoinHistoryInteractor.swift */,
 				B5F79E2C26F5C1B7006CD26A /* Info.plist */,
 			);
 			path = CoinHistoryTests;
-			sourceTree = "<group>";
-		};
-		B5F79E3326F5C301006CD26A /* Mocks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -643,7 +603,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B50CE9E226F25A52001137C1 /* PriceDetailProtocol.swift in Sources */,
 				B50CE9E026F259C3001137C1 /* ForexConversionResponse.swift in Sources */,
 				B50CE9E426F25B30001137C1 /* PriceDetailPresenter.swift in Sources */,
 				B50CE9E626F25DB3001137C1 /* PriceDetailInteractor.swift in Sources */,
@@ -681,6 +640,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5F79E3726F5E5F7006CD26A /* CoinHistoryInteractor.swift in Sources */,
 				B5F79E2B26F5C1B7006CD26A /* CoinHistoryPresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

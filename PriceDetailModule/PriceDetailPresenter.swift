@@ -9,8 +9,6 @@ import Foundation
 
 protocol ViewToPresenterProtocol: AnyObject {
     var view: PresenterToViewProtocol? { get set }
-    var interactor: PresenterToInteractorProtocol? { get set }
-    var router: PresenterToRouterProtocol? { get set }
     var usDollarsText: String { get }
     var gbPoundsText: String { get }
     var eurosText: String { get }
@@ -19,25 +17,29 @@ protocol ViewToPresenterProtocol: AnyObject {
     func fetchForexRates()
 }
 
-protocol InteractorToPresenterProtocol: AnyObject {
-    func fetchForexRatesSuccess(rates: ForexRates)
-    func networkError(_ errorMessage: String)
+protocol PresenterToViewProtocol: AnyObject {
+    func refreshCurrencyText()
+    func showAlert(_ message: String)
 }
 
 class PriceDetailPresenter: ViewToPresenterProtocol {
     weak var view: PresenterToViewProtocol?
-    var interactor: PresenterToInteractorProtocol?
-    var router: PresenterToRouterProtocol?
+    private var interactor: PresenterToInteractorProtocol
+    private var router: PresenterToRouterProtocol
     
     private var baseEuroPrice: Double
     private var dateString: String
     
     init(
         baseEuroPrice: Double,
-        dateString: String
+        dateString: String,
+        interactor: PresenterToInteractorProtocol,
+        router: PresenterToRouterProtocol
     ) {
         self.baseEuroPrice = baseEuroPrice
         self.dateString = dateString
+        self.interactor = interactor
+        self.router = router
     }
     
     private var currencyPrices: (usDollars: Double, gbPounds: Double) = (.zero, .zero) {
@@ -63,7 +65,7 @@ class PriceDetailPresenter: ViewToPresenterProtocol {
     }
     
     func fetchForexRates() {
-        interactor?.fetchForexRates(for: dateString)
+        interactor.fetchForexRates(for: dateString)
     }
 }
 

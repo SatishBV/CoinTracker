@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+protocol PresenterToRouterProtocol: AnyObject {}
+
 public class PriceDetailRouter: PresenterToRouterProtocol {
     static var bundle: Bundle? {
         Bundle(identifier: "com.satish.PriceDetailModule")
@@ -23,18 +25,17 @@ public class PriceDetailRouter: PresenterToRouterProtocol {
             fatalError("Unable to Load view from storyboard")
         }
         
-        let presenter: ViewToPresenterProtocol & InteractorToPresenterProtocol =
-            PriceDetailPresenter(
-                baseEuroPrice: baseEuroPrice,
-                dateString: dateString
-            )
         let interactor: PresenterToInteractorProtocol = PriceDetailInteractor()
         let router: PresenterToRouterProtocol = PriceDetailRouter()
+        let presenter = PriceDetailPresenter(
+            baseEuroPrice: baseEuroPrice,
+            dateString: dateString,
+            interactor: interactor,
+            router: router
+        )
         
         view.presenter = presenter
         presenter.view = view
-        presenter.router = router
-        presenter.interactor = interactor
         interactor.presenter = presenter
         
         return view
