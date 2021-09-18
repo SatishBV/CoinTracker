@@ -9,7 +9,7 @@ import Foundation
 
 protocol PresenterToViewProtocol: AnyObject {
     func refreshCurrencyText()
-    func showError()
+    func showAlert(_ message: String)
 }
 
 protocol PresenterToRouterProtocol: AnyObject {

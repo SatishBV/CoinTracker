@@ -21,7 +21,7 @@ protocol ViewToPresenterProtocol: AnyObject {
 
 protocol InteractorToPresenterProtocol: AnyObject {
     func fetchForexRatesSuccess(rates: ForexRates)
-    func fetchForexRatesFailed()
+    func networkError(_ errorMessage: String)
 }
 
 class PriceDetailPresenter: ViewToPresenterProtocol {
@@ -74,7 +74,7 @@ extension PriceDetailPresenter: InteractorToPresenterProtocol {
         self.currencyPrices = (usdPrice, gbpPrice)
     }
     
-    func fetchForexRatesFailed() {
-        view?.showError()
+    func networkError(_ errorMessage: String) {
+        view?.showAlert(errorMessage)
     }
 }

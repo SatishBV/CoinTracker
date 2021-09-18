@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Utilities
 
 final class CoinHistoryViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -42,14 +43,19 @@ extension CoinHistoryViewController: PresenterToViewProtocol {
         }
     }
     
-    func showError() {
-        // TODO: Show an alert
+    func showError(message: String) {
         toggleSpinner(loading: false)
-        print("Error")
+        DispatchQueue.main.async { [weak self] in
+            self?.showAlert(title: nil, message: message)
+        }
     }
 }
 
 extension CoinHistoryViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        80
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         

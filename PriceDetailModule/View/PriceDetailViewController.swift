@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Utilities
 
 public final class PriceDetailViewController: UIViewController {
     @IBOutlet weak var spinner: UIActivityIndicatorView!
@@ -48,5 +49,10 @@ extension PriceDetailViewController: PresenterToViewProtocol {
     func showError() {
         print("Error")
         toggleSpinner(loading: false)
+    }
+    
+    func showAlert(_ message: String) {
+        toggleSpinner(loading: false)
+        showAlert(title: nil, message: message)
     }
 }

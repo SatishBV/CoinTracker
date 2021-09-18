@@ -6,12 +6,15 @@
 //
 
 import Foundation
+import Utilities
 
 class CoinHistoryInteractor: PresenterToInteractorProtocol {
     weak var presenter: InteractorToPresenterProtocol?
     
     func fetchHistoricalPrices() {
-        var components = URLComponents(string: "https://api.coingecko.com/api/v3/coins/bitcoin/market_chart")!
+        guard var components = URLComponents(string: "https://api.coingecko.com/api/v3/coins/bitcoin/market_chart") else {
+            return
+        }
         
         components.queryItems = [
             URLQueryItem(name: "vs_currency", value: "eur"),
@@ -19,33 +22,15 @@ class CoinHistoryInteractor: PresenterToInteractorProtocol {
             URLQueryItem(name: "interval", value: "daily"),
         ]
         
-        let request = URLRequest(url: components.url!)
-        let task = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
+        NetworkManager<HistoricalPricesResponse>.fetch(from: components) { [weak self] result in
             guard let self = self else { return }
-            if error != nil {
-                self.presenter?.historicalPricesFetchFailed()
-                return
-            }
-            
-            guard let data = data,
-                  let response = response as? HTTPURLResponse,
-                  200 ..< 300 ~= response.statusCode
-            else {
-                self.presenter?.historicalPricesFetchFailed()
-                return
-            }
-            
-            do {
-                let response = try JSONDecoder().decode(HistoricalPricesResponse.self, from: data)
+            switch result {
+            case let .success(response):
                 self.presenter?.historicalPricesFetchedSuccess(prices: response.pastPrices)
-                return
-            } catch {
-                self.presenter?.historicalPricesFetchFailed()
-                return
+            case let .failure(error):
+                self.presenter?.networkingError(error.errorDescription)
             }
         }
-        
-        task.resume()
     }
     
     func fetchCurrentBitCoinPrice() {
@@ -58,32 +43,14 @@ class CoinHistoryInteractor: PresenterToInteractorProtocol {
             URLQueryItem(name: "vs_currencies", value: "eur")
         ]
         
-        let request = URLRequest(url: components.url!)
-        let task = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
+        NetworkManager<CurrentPriceResponse>.fetch(from: components) { [weak self] result in
             guard let self = self else { return }
-            if error != nil {
-                self.presenter?.currentBitCoinPriceFetchFailed()
-                return
-            }
-            
-            guard let data = data,
-                  let response = response as? HTTPURLResponse,
-                  200 ..< 300 ~= response.statusCode
-            else {
-                self.presenter?.currentBitCoinPriceFetchFailed()
-                return
-            }
-            
-            do {
-                let resp = try JSONDecoder().decode(CurrentPriceResponse.self, from: data)
-                self.presenter?.currentBitCoinPriceFetchSuccess(price: resp.bitcoin.eur)
-                return
-            } catch {
-                self.presenter?.currentBitCoinPriceFetchFailed()
-                return
+            switch result {
+            case let .success(response):
+                self.presenter?.currentBitCoinPriceFetchSuccess(price:  response.bitcoin.eur)
+            case let .failure(error):
+                self.presenter?.networkingError(error.errorDescription)
             }
         }
-        
-        task.resume()
     }
 }

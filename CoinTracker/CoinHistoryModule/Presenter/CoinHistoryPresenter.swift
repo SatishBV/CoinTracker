@@ -59,17 +59,13 @@ extension CoinHistoryPresenter: InteractorToPresenterProtocol {
         print("Current price: ",price)
     }
     
-    func currentBitCoinPriceFetchFailed() {
-        view?.showError()
+    func networkingError(_ errorMessage: String) {
+        view?.showError(message: errorMessage)
     }
     
     func historicalPricesFetchedSuccess(prices: [Double]) {
         self.historicalPrices = prices
         self.beginTimer()
-    }
-    
-    func historicalPricesFetchFailed() {
-        view?.showError()
     }
 }
 

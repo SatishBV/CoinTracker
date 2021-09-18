@@ -22,7 +22,7 @@ protocol ViewToPresenterProtocol: AnyObject {
 
 protocol PresenterToViewProtocol: AnyObject {
     func refreshTableView()
-    func showError()
+    func showError(message: String)
 }
 
 protocol PresenterToRouterProtocol: AnyObject {
@@ -41,7 +41,6 @@ protocol PresenterToInteractorProtocol: AnyObject {
 
 protocol InteractorToPresenterProtocol: AnyObject {
     func historicalPricesFetchedSuccess(prices: [Double])
-    func historicalPricesFetchFailed()
     func currentBitCoinPriceFetchSuccess(price: Double)
-    func currentBitCoinPriceFetchFailed()
+    func networkingError(_ errorMessage: String)
 }
