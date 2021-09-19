@@ -564,12 +564,10 @@
 					};
 					B5F79E2726F5C1B7006CD26A = {
 						CreatedOnToolsVersion = 12.5;
-						TestTargetID = B50CE95026F1E397001137C1;
 					};
 					B5F79E4826F7040C006CD26A = {
 						CreatedOnToolsVersion = 12.5;
 						LastSwiftMigration = 1250;
-						TestTargetID = B50CE95026F1E397001137C1;
 					};
 				};
 			};
@@ -1121,7 +1119,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoinTracker.app/CoinTracker";
 			};
 			name = Debug;
 		};
@@ -1140,7 +1137,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoinTracker.app/CoinTracker";
 			};
 			name = Release;
 		};
@@ -1161,7 +1157,6 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoinTracker.app/CoinTracker";
 			};
 			name = Debug;
 		};
@@ -1181,7 +1176,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoinTracker.app/CoinTracker";
 			};
 			name = Release;
 		};
