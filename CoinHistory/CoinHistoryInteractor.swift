@@ -31,6 +31,8 @@ class CoinHistoryInteractor: PresenterToInteractorProtocol {
         self.coinGeckoService = coinGeckoService
     }
     
+    /// Gets the historical prices of bitcoin from the `coinGeckoService`
+    /// Relays the success/error response back to the presenter
     func fetchHistoricalPrices() {
         coinGeckoService.fetchHistoricalPrices { [weak self] result in
             guard let self = self else { return }
@@ -43,6 +45,8 @@ class CoinHistoryInteractor: PresenterToInteractorProtocol {
         }
     }
     
+    /// Gets the current price of bitcoin from the `coinGeckoService`
+    /// Relays the success/error response back to the presenter
     func fetchCurrentBitCoinPrice() {
         coinGeckoService.fetchCurrentBitCoinPrice { [weak self] result in
             guard let self = self else { return }

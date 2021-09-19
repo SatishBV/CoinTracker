@@ -16,8 +16,6 @@ final class CoinHistoryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
         self.navigationItem.title = "Coin history"
         
         tableView.tableFooterView = UIView()
@@ -28,6 +26,8 @@ final class CoinHistoryViewController: UIViewController {
         presenter?.fetchHistoricalPrices()
     }
     
+    /// Shows spinner when the historical prices are still being fetched
+    /// - Parameter loading: Shows spinner when true. Hides and stops when false
     func toggleSpinner(loading: Bool) {
         DispatchQueue.main.async { [weak self] in
             loading ? self?.spinner.startAnimating() : self?.spinner.stopAnimating()
@@ -36,6 +36,7 @@ final class CoinHistoryViewController: UIViewController {
 }
 
 extension CoinHistoryViewController: PresenterToViewProtocol {
+    /// Reloads the tableview whenever the presenter says so
     func refreshTableView() {
         toggleSpinner(loading: false)
         DispatchQueue.main.async { [weak self] in
@@ -43,6 +44,8 @@ extension CoinHistoryViewController: PresenterToViewProtocol {
         }
     }
     
+    /// When the presenter says there has been an error, it stops the spinner and displays an alert
+    /// - Parameter message: Message shown in the alert
     func showError(message: String) {
         toggleSpinner(loading: false)
         DispatchQueue.main.async { [weak self] in

@@ -25,6 +25,8 @@ public class CoinHistoryRouter: PresenterToRouterProtocol {
         return UIStoryboard(name: "Main", bundle: bundle)
     }
     
+    /// Starting point of the Module `CoinHistory`
+    /// - Returns: Instantiation of the rootVieiwController for the module
     public static func createModule() -> UIViewController {
         guard let view = storyboard.instantiateViewController(withIdentifier: String(describing: CoinHistoryViewController.self))
                 as? CoinHistoryViewController else {
@@ -42,6 +44,11 @@ public class CoinHistoryRouter: PresenterToRouterProtocol {
         return view
     }
     
+    /// Pushes the price details screen
+    /// - Parameters:
+    ///   - navigationConroller: Navigation controller where the new screen has to be pushed
+    ///   - baseEuroPrice: Price which the new screen will be using to display all the details
+    ///   - dateString: Date which the new screen will be using to fetch all details
     func pushToPriceDetailsScreen(
         navigationConroller: UINavigationController,
         baseEuroPrice: Double,
