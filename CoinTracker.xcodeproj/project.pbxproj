@@ -47,6 +47,11 @@
 		B5F79E3F26F6FCF0006CD26A /* CurrentBitcoinPriceResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = B5F79E3E26F6FCF0006CD26A /* CurrentBitcoinPriceResponse.json */; };
 		B5F79E4226F6FD50006CD26A /* FakeCoinGeckoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F79E4126F6FD50006CD26A /* FakeCoinGeckoService.swift */; };
 		B5F79E4426F70033006CD26A /* CoinHistoryCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F79E4326F70033006CD26A /* CoinHistoryCellViewModelTests.swift */; };
+		B5F79E4E26F7040C006CD26A /* PriceDetailModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B50CE9CF26F25708001137C1 /* PriceDetailModule.framework */; platformFilter = ios; };
+		B5F79E5926F70470006CD26A /* PriceDetailPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F79E5826F70470006CD26A /* PriceDetailPresenterTests.swift */; };
+		B5F79E5B26F70885006CD26A /* PriceDetailInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F79E5A26F70885006CD26A /* PriceDetailInteractorTests.swift */; };
+		B5F79E5D26F70A1A006CD26A /* ForexConversionSuccessResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = B5F79E5C26F70A1A006CD26A /* ForexConversionSuccessResponse.json */; };
+		B5F79E6026F70BBC006CD26A /* FakeForexRatesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F79E5F26F70BBC006CD26A /* FakeForexRatesService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +89,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = B5F79E0126F5B7AF006CD26A;
 			remoteInfo = CoinHistory;
+		};
+		B5F79E4F26F7040C006CD26A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B50CE94926F1E397001137C1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B50CE9CE26F25708001137C1;
+			remoteInfo = PriceDetailModule;
+		};
+		B5F79E5426F70415006CD26A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B50CE94926F1E397001137C1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B50CE95026F1E397001137C1;
+			remoteInfo = CoinTracker;
+		};
+		B5F79E5626F70418006CD26A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B50CE94926F1E397001137C1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B50CE95026F1E397001137C1;
+			remoteInfo = CoinTracker;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -149,6 +175,12 @@
 		B5F79E3E26F6FCF0006CD26A /* CurrentBitcoinPriceResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CurrentBitcoinPriceResponse.json; sourceTree = "<group>"; };
 		B5F79E4126F6FD50006CD26A /* FakeCoinGeckoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCoinGeckoService.swift; sourceTree = "<group>"; };
 		B5F79E4326F70033006CD26A /* CoinHistoryCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinHistoryCellViewModelTests.swift; sourceTree = "<group>"; };
+		B5F79E4926F7040C006CD26A /* PriceDetailModuleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PriceDetailModuleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5F79E4D26F7040C006CD26A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5F79E5826F70470006CD26A /* PriceDetailPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceDetailPresenterTests.swift; sourceTree = "<group>"; };
+		B5F79E5A26F70885006CD26A /* PriceDetailInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceDetailInteractorTests.swift; sourceTree = "<group>"; };
+		B5F79E5C26F70A1A006CD26A /* ForexConversionSuccessResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ForexConversionSuccessResponse.json; sourceTree = "<group>"; };
+		B5F79E5F26F70BBC006CD26A /* FakeForexRatesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeForexRatesService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +230,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B5F79E4626F7040C006CD26A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5F79E4E26F7040C006CD26A /* PriceDetailModule.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -209,6 +249,7 @@
 				B5F79E0326F5B7AF006CD26A /* CoinHistory */,
 				B5F79E2926F5C1B7006CD26A /* CoinHistoryTests */,
 				B50CE9D026F25708001137C1 /* PriceDetailModule */,
+				B5F79E4A26F7040C006CD26A /* PriceDetailModuleTests */,
 				B5F79DEA26F5AC8B006CD26A /* Utilities */,
 				B50CE95226F1E397001137C1 /* Products */,
 			);
@@ -223,6 +264,7 @@
 				B5F79DE926F5AC8B006CD26A /* Utilities.framework */,
 				B5F79E0226F5B7AF006CD26A /* CoinHistory.framework */,
 				B5F79E2826F5C1B7006CD26A /* CoinHistoryTests.xctest */,
+				B5F79E4926F7040C006CD26A /* PriceDetailModuleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -289,11 +331,11 @@
 				B50CE9E526F25DB3001137C1 /* PriceDetailInteractor.swift */,
 				B50CE9E326F25B30001137C1 /* PriceDetailPresenter.swift */,
 				B50CE9C826F2546C001137C1 /* PriceDetailRouter.swift */,
+				B5F79E3A26F5F84F006CD26A /* ForexRatesService.swift */,
 				B50CE9B226F24637001137C1 /* View */,
 				B50CE9AE26F24614001137C1 /* Entity */,
 				B50CE9D126F25708001137C1 /* PriceDetailModule.h */,
 				B50CE9D226F25708001137C1 /* Info.plist */,
-				B5F79E3A26F5F84F006CD26A /* ForexRatesService.swift */,
 			);
 			path = PriceDetailModule;
 			sourceTree = "<group>";
@@ -360,6 +402,26 @@
 				B5F79E3C26F6FBAA006CD26A /* HistoricalPricesSuccessResponse.json */,
 				B5F79E3E26F6FCF0006CD26A /* CurrentBitcoinPriceResponse.json */,
 				B5F79E4126F6FD50006CD26A /* FakeCoinGeckoService.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		B5F79E4A26F7040C006CD26A /* PriceDetailModuleTests */ = {
+			isa = PBXGroup;
+			children = (
+				B5F79E5E26F70BAA006CD26A /* Mocks */,
+				B5F79E4D26F7040C006CD26A /* Info.plist */,
+				B5F79E5826F70470006CD26A /* PriceDetailPresenterTests.swift */,
+				B5F79E5A26F70885006CD26A /* PriceDetailInteractorTests.swift */,
+			);
+			path = PriceDetailModuleTests;
+			sourceTree = "<group>";
+		};
+		B5F79E5E26F70BAA006CD26A /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				B5F79E5C26F70A1A006CD26A /* ForexConversionSuccessResponse.json */,
+				B5F79E5F26F70BBC006CD26A /* FakeForexRatesService.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -499,10 +561,30 @@
 			);
 			dependencies = (
 				B5F79E2F26F5C1B7006CD26A /* PBXTargetDependency */,
+				B5F79E5526F70415006CD26A /* PBXTargetDependency */,
 			);
 			name = CoinHistoryTests;
 			productName = CoinHistoryTests;
 			productReference = B5F79E2826F5C1B7006CD26A /* CoinHistoryTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B5F79E4826F7040C006CD26A /* PriceDetailModuleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5F79E5126F7040C006CD26A /* Build configuration list for PBXNativeTarget "PriceDetailModuleTests" */;
+			buildPhases = (
+				B5F79E4526F7040C006CD26A /* Sources */,
+				B5F79E4626F7040C006CD26A /* Frameworks */,
+				B5F79E4726F7040C006CD26A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B5F79E5026F7040C006CD26A /* PBXTargetDependency */,
+				B5F79E5726F70418006CD26A /* PBXTargetDependency */,
+			);
+			name = PriceDetailModuleTests;
+			productName = PriceDetailModuleTests;
+			productReference = B5F79E4926F7040C006CD26A /* PriceDetailModuleTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -533,6 +615,12 @@
 					};
 					B5F79E2726F5C1B7006CD26A = {
 						CreatedOnToolsVersion = 12.5;
+						TestTargetID = B50CE95026F1E397001137C1;
+					};
+					B5F79E4826F7040C006CD26A = {
+						CreatedOnToolsVersion = 12.5;
+						LastSwiftMigration = 1250;
+						TestTargetID = B50CE95026F1E397001137C1;
 					};
 				};
 			};
@@ -555,6 +643,7 @@
 				B5F79DE826F5AC8B006CD26A /* Utilities */,
 				B5F79E0126F5B7AF006CD26A /* CoinHistory */,
 				B5F79E2726F5C1B7006CD26A /* CoinHistoryTests */,
+				B5F79E4826F7040C006CD26A /* PriceDetailModuleTests */,
 			);
 		};
 /* End PBXProject section */
@@ -605,6 +694,14 @@
 			files = (
 				B5F79E3F26F6FCF0006CD26A /* CurrentBitcoinPriceResponse.json in Resources */,
 				B5F79E3D26F6FBAA006CD26A /* HistoricalPricesSuccessResponse.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5F79E4726F7040C006CD26A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5F79E5D26F70A1A006CD26A /* ForexConversionSuccessResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -677,6 +774,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B5F79E4526F7040C006CD26A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5F79E6026F70BBC006CD26A /* FakeForexRatesService.swift in Sources */,
+				B5F79E5B26F70885006CD26A /* PriceDetailInteractorTests.swift in Sources */,
+				B5F79E5926F70470006CD26A /* PriceDetailPresenterTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -705,6 +812,22 @@
 			platformFilter = ios;
 			target = B5F79E0126F5B7AF006CD26A /* CoinHistory */;
 			targetProxy = B5F79E2E26F5C1B7006CD26A /* PBXContainerItemProxy */;
+		};
+		B5F79E5026F7040C006CD26A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = B50CE9CE26F25708001137C1 /* PriceDetailModule */;
+			targetProxy = B5F79E4F26F7040C006CD26A /* PBXContainerItemProxy */;
+		};
+		B5F79E5526F70415006CD26A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B50CE95026F1E397001137C1 /* CoinTracker */;
+			targetProxy = B5F79E5426F70415006CD26A /* PBXContainerItemProxy */;
+		};
+		B5F79E5726F70418006CD26A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B50CE95026F1E397001137C1 /* CoinTracker */;
+			targetProxy = B5F79E5626F70418006CD26A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1114,6 +1237,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoinTracker.app/CoinTracker";
 			};
 			name = Debug;
 		};
@@ -1132,6 +1256,48 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoinTracker.app/CoinTracker";
+			};
+			name = Release;
+		};
+		B5F79E5226F7040C006CD26A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P3BWX23366;
+				INFOPLIST_FILE = PriceDetailModuleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.satish.PriceDetailModuleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoinTracker.app/CoinTracker";
+			};
+			name = Debug;
+		};
+		B5F79E5326F7040C006CD26A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P3BWX23366;
+				INFOPLIST_FILE = PriceDetailModuleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.satish.PriceDetailModuleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoinTracker.app/CoinTracker";
 			};
 			name = Release;
 		};
@@ -1197,6 +1363,15 @@
 			buildConfigurations = (
 				B5F79E3026F5C1B7006CD26A /* Debug */,
 				B5F79E3126F5C1B7006CD26A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5F79E5126F7040C006CD26A /* Build configuration list for PBXNativeTarget "PriceDetailModuleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5F79E5226F7040C006CD26A /* Debug */,
+				B5F79E5326F7040C006CD26A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

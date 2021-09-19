@@ -30,12 +30,6 @@ class PriceDetailInteractor: PresenterToInteractorProtocol {
     }
     
     func fetchForexRates(for dateString: String) {
-        // TODO: Prevent API call as it might run out of limit
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.presenter?.fetchForexRatesSuccess(rates: ForexRates(usd: 1.182306, gbp: 0.855735))
-        }
-        return
-        
         forexRatesService.forexRates(for: dateString) { [weak self] result in
             guard let self = self else { return }
             switch result {
