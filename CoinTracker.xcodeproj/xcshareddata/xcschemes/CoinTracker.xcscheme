@@ -32,9 +32,19 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B50CE96626F1E39A001137C1"
-               BuildableName = "CoinTrackerTests.xctest"
-               BlueprintName = "CoinTrackerTests"
+               BlueprintIdentifier = "B5F79E2726F5C1B7006CD26A"
+               BuildableName = "CoinHistoryTests.xctest"
+               BlueprintName = "CoinHistoryTests"
+               ReferencedContainer = "container:CoinTracker.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B5F79E4826F7040C006CD26A"
+               BuildableName = "PriceDetailModuleTests.xctest"
+               BlueprintName = "PriceDetailModuleTests"
                ReferencedContainer = "container:CoinTracker.xcodeproj">
             </BuildableReference>
          </TestableReference>
