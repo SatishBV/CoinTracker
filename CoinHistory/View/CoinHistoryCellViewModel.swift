@@ -28,11 +28,11 @@ final class CoinHistoryCellViewModel: Equatable {
         String(format: "%.2f€", price)
     }
     
-    var dateString: String {
+    func dateString(_ startDate: Date = Date()) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-dd"
         
-        guard let previousDate = Calendar.current.date(byAdding: .day, value: -(index), to: Date()) else {
+        guard let previousDate = Calendar.current.date(byAdding: .day, value: -(index), to: startDate) else {
             return ""
         }
         return dateFormatter.string(from: previousDate)

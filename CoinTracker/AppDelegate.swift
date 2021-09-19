@@ -34,6 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
  - [x] Write Timer logic to refresh today's price
  - [x] Implement Router navigation
  - [x] Move `CoinHistoryModule` to a new framework
- - [ ] Write unit tests for viewModels and utility classes
+ - [x] Write unit tests for viewModels and utility classes
  - [ ] Write documentation
  */

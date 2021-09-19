@@ -17,7 +17,7 @@ final class CoinHistoryTableViewCell: UITableViewCell {
     }
     
     func configure(for viewModel: CoinHistoryCellViewModel) {
-        dateLabel.text = viewModel.dateString
+        dateLabel.text = viewModel.dateString()
         priceLabel.text = viewModel.formattedPriceString
     }
 }
