@@ -128,7 +128,7 @@ class CoinHistoryPresenterTests: XCTestCase {
         sut.historicalPricesFetchedSuccess(prices: [1.0, 2.0, 3.3, 4.4])
         sut.showPriceDetails(index: 0, navigationController: UINavigationController())
         
-        let dateString = sut[0]?.dateString
+        let dateString: String? = sut[0]?.dateString()
         XCTAssertEqual(mockRouter.baseEuroPrice, 1.0)
         XCTAssertEqual(mockRouter.dateString, dateString)
     }

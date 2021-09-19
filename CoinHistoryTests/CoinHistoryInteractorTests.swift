@@ -14,40 +14,19 @@ class CoinHistoryInteractorTests: XCTestCase {
     
     class MockPresenter: InteractorToPresenterProtocol {
         var errorMessage: String?
+        var historicalPricesFetched: [Double]?
+        var currentBitcoinPrice: Double?
         
         func historicalPricesFetchedSuccess(prices: [Double]) {
-            
+            self.historicalPricesFetched = prices
         }
         
         func currentBitCoinPriceFetchSuccess(price: Double) {
-            
+            self.currentBitcoinPrice = price
         }
         
         func networkingError(_ errorMessage: String) {
             self.errorMessage = errorMessage
-        }
-    }
-    
-    class FakeCoinGeckoService: CoinGeckoProtocol {
-        // TODO: Add success test type and stub a successful JSON result
-        enum TestType {
-            case parseFailure
-        }
-        
-        var testType: TestType = .parseFailure
-        
-        func fetchHistoricalPrices(_ completion: @escaping (Result<HistoricalPricesResponse, NetworkError>) -> Void) {
-            switch testType {
-            case .parseFailure:
-                completion(.failure(.parsingError))
-            }
-        }
-        
-        func fetchCurrentBitCoinPrice(_ completion: @escaping (Result<CurrentPriceResponse, NetworkError>) -> Void) {
-            switch testType {
-            case .parseFailure:
-                completion(.failure(.parsingError))
-            }
         }
     }
     
@@ -62,11 +41,37 @@ class CoinHistoryInteractorTests: XCTestCase {
         sut.presenter = mockPresenter
     }
     
-    func testFetchHistoricalPrices_ParseError() {
-        fakeService.testType = .parseFailure
+    func testFetchHistoricalPrices_ApiError() {
+        fakeService.testType = .apiFailure
         
         sut.fetchHistoricalPrices()
         XCTAssertNotNil(mockPresenter.errorMessage)
-        XCTAssertTrue(mockPresenter.errorMessage == "Unable to parse the response")
+        XCTAssertTrue(mockPresenter.errorMessage == NetworkError.invalidResponse.errorDescription)
+    }
+    
+    func testFetchHistoricalPrices_Success() {
+        fakeService.testType = .success
+        
+        sut.fetchHistoricalPrices()
+        XCTAssertNotNil(mockPresenter.historicalPricesFetched)
+        XCTAssertTrue(mockPresenter.historicalPricesFetched?.count == 15)
+        XCTAssertEqual(mockPresenter.historicalPricesFetched?.first, 43495.171939260115)
+        XCTAssertEqual(mockPresenter.historicalPricesFetched?.last, 40844.015297286875)
+    }
+    
+    func testFetchCurrentBitCoinPrice_ApiError() {
+        fakeService.testType = .apiFailure
+        
+        sut.fetchCurrentBitCoinPrice()
+        XCTAssertNotNil(mockPresenter.errorMessage)
+        XCTAssertTrue(mockPresenter.errorMessage == NetworkError.invalidResponse.errorDescription)
+    }
+    
+    func testFetchCurrentBitCoinPrice_Success() {
+        fakeService.testType = .success
+        
+        sut.fetchCurrentBitCoinPrice()
+        XCTAssertNotNil(mockPresenter.currentBitcoinPrice)
+        XCTAssertEqual(mockPresenter.currentBitcoinPrice, 40861)
     }
 }

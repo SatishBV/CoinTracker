@@ -43,6 +43,10 @@
 		B5F79E3726F5E5F7006CD26A /* CoinHistoryInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F79E3626F5E5F7006CD26A /* CoinHistoryInteractorTests.swift */; };
 		B5F79E3926F5F635006CD26A /* CoinGeckoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F79E3826F5F635006CD26A /* CoinGeckoService.swift */; };
 		B5F79E3B26F5F84F006CD26A /* ForexRatesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F79E3A26F5F84F006CD26A /* ForexRatesService.swift */; };
+		B5F79E3D26F6FBAA006CD26A /* HistoricalPricesSuccessResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = B5F79E3C26F6FBAA006CD26A /* HistoricalPricesSuccessResponse.json */; };
+		B5F79E3F26F6FCF0006CD26A /* CurrentBitcoinPriceResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = B5F79E3E26F6FCF0006CD26A /* CurrentBitcoinPriceResponse.json */; };
+		B5F79E4226F6FD50006CD26A /* FakeCoinGeckoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F79E4126F6FD50006CD26A /* FakeCoinGeckoService.swift */; };
+		B5F79E4426F70033006CD26A /* CoinHistoryCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F79E4326F70033006CD26A /* CoinHistoryCellViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +145,10 @@
 		B5F79E3626F5E5F7006CD26A /* CoinHistoryInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinHistoryInteractorTests.swift; sourceTree = "<group>"; };
 		B5F79E3826F5F635006CD26A /* CoinGeckoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinGeckoService.swift; sourceTree = "<group>"; };
 		B5F79E3A26F5F84F006CD26A /* ForexRatesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForexRatesService.swift; sourceTree = "<group>"; };
+		B5F79E3C26F6FBAA006CD26A /* HistoricalPricesSuccessResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = HistoricalPricesSuccessResponse.json; sourceTree = "<group>"; };
+		B5F79E3E26F6FCF0006CD26A /* CurrentBitcoinPriceResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CurrentBitcoinPriceResponse.json; sourceTree = "<group>"; };
+		B5F79E4126F6FD50006CD26A /* FakeCoinGeckoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCoinGeckoService.swift; sourceTree = "<group>"; };
+		B5F79E4326F70033006CD26A /* CoinHistoryCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinHistoryCellViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -337,11 +345,23 @@
 		B5F79E2926F5C1B7006CD26A /* CoinHistoryTests */ = {
 			isa = PBXGroup;
 			children = (
+				B5F79E4026F6FD40006CD26A /* Mocks */,
 				B5F79E2A26F5C1B7006CD26A /* CoinHistoryPresenterTests.swift */,
 				B5F79E3626F5E5F7006CD26A /* CoinHistoryInteractorTests.swift */,
+				B5F79E4326F70033006CD26A /* CoinHistoryCellViewModelTests.swift */,
 				B5F79E2C26F5C1B7006CD26A /* Info.plist */,
 			);
 			path = CoinHistoryTests;
+			sourceTree = "<group>";
+		};
+		B5F79E4026F6FD40006CD26A /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				B5F79E3C26F6FBAA006CD26A /* HistoricalPricesSuccessResponse.json */,
+				B5F79E3E26F6FCF0006CD26A /* CurrentBitcoinPriceResponse.json */,
+				B5F79E4126F6FD50006CD26A /* FakeCoinGeckoService.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -583,6 +603,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5F79E3F26F6FCF0006CD26A /* CurrentBitcoinPriceResponse.json in Resources */,
+				B5F79E3D26F6FBAA006CD26A /* HistoricalPricesSuccessResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -648,8 +670,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5F79E4426F70033006CD26A /* CoinHistoryCellViewModelTests.swift in Sources */,
 				B5F79E3726F5E5F7006CD26A /* CoinHistoryInteractorTests.swift in Sources */,
 				B5F79E2B26F5C1B7006CD26A /* CoinHistoryPresenterTests.swift in Sources */,
+				B5F79E4226F6FD50006CD26A /* FakeCoinGeckoService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

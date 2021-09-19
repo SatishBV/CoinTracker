@@ -65,7 +65,7 @@ class CoinHistoryPresenter: ViewToPresenterProtocol {
         router.pushToPriceDetailsScreen(
             navigationConroller: navigationController,
             baseEuroPrice: cellViewModel.priceInEuros,
-            dateString: cellViewModel.dateString
+            dateString: cellViewModel.dateString()
         )
     }
     
