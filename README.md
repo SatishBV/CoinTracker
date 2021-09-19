@@ -2,8 +2,8 @@
 
 This is an app to track Bitcoin price in the last fortnight.
 It has two screens:
-	- **List screen**: Shows the Bitcoin price in Euros for each of the last 14 days and today in the rows.
-	- **Detail screen**: On tap of any row on List screen, the price details for that day are displayed on the detail screen. Here, the price is shown in Euros, US Dollar and GB Pound on that day based on the forex rates on that day.
+- **List screen**: Shows the Bitcoin price in Euros for each of the last 14 days and today in the rows.
+- **Detail screen**: On tap of any row on List screen, the price details for that day are displayed on the detail screen. Here, the price is shown in Euros, US Dollar and GB Pound on that day based on the forex rates on that day.
 
 ## Installation
 1. Clone or download the project and open `CoinTracker.xcodeproj` file using Xcode 12. Preferably Xcode 12.5
