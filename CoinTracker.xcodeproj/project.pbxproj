@@ -61,6 +61,27 @@
 			remoteGlobalIDString = B50CE9CE26F25708001137C1;
 			remoteInfo = PriceDetailModule;
 		};
+		B5F3457D26FB51F8004F0DA6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B50CE94926F1E397001137C1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B5F79DE826F5AC8B006CD26A;
+			remoteInfo = Utilities;
+		};
+		B5F3457F26FB5202004F0DA6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B50CE94926F1E397001137C1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B50CE9CE26F25708001137C1;
+			remoteInfo = PriceDetailModule;
+		};
+		B5F3458126FB5210004F0DA6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B50CE94926F1E397001137C1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B5F79DE826F5AC8B006CD26A;
+			remoteInfo = Utilities;
+		};
 		B5F79DEE26F5AC8B006CD26A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B50CE94926F1E397001137C1 /* Project object */;
@@ -460,6 +481,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B5F3457E26FB51F8004F0DA6 /* PBXTargetDependency */,
 			);
 			name = PriceDetailModule;
 			productName = PriceDetailModule;
@@ -496,6 +518,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				B5F3458226FB5210004F0DA6 /* PBXTargetDependency */,
+				B5F3458026FB5202004F0DA6 /* PBXTargetDependency */,
 			);
 			name = CoinHistory;
 			productName = CoinHistory;
@@ -722,6 +746,21 @@
 			isa = PBXTargetDependency;
 			target = B50CE9CE26F25708001137C1 /* PriceDetailModule */;
 			targetProxy = B50CE9D426F25708001137C1 /* PBXContainerItemProxy */;
+		};
+		B5F3457E26FB51F8004F0DA6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B5F79DE826F5AC8B006CD26A /* Utilities */;
+			targetProxy = B5F3457D26FB51F8004F0DA6 /* PBXContainerItemProxy */;
+		};
+		B5F3458026FB5202004F0DA6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B50CE9CE26F25708001137C1 /* PriceDetailModule */;
+			targetProxy = B5F3457F26FB5202004F0DA6 /* PBXContainerItemProxy */;
+		};
+		B5F3458226FB5210004F0DA6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B5F79DE826F5AC8B006CD26A /* Utilities */;
+			targetProxy = B5F3458126FB5210004F0DA6 /* PBXContainerItemProxy */;
 		};
 		B5F79DEF26F5AC8B006CD26A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
